@@ -1,58 +1,54 @@
-// // import Detail from "./components/Detail"
-// // import  from "./components/Productpractical"
-// import Navebar  from "./components/Navebar"
-// // import Productpractical from "./components/Productpractical"
-// // import About  from "./Pages/About"
-// // import Contact  from "./Pages/Contact"
-// import Home  from "./Pages/Home"
-// // import Shop  from "./Pages/Shop"
-// // import Head  from "./Pages/Head"
-// // import Cart from './Pages/Cart'
-// import Icons from './Pages/Icons'
-// import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-// import TaxSoftware from "./components/TaxSoftware"
-// // import TaxSoftware from './TaxSoftware';
 
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import LoginPage from './Pages/LoginPage'; // Adjust the path as needed
-import Footer from "./components/Footer"
-import Navebar from "./components/Navebar"
-import Home from "./Pages/Home"
-import UserList from "./components/UserList"
-import ProductList from "./components/ProductList"
-import Tshop from "./components/Tshop"
-import Icons from "./pages/Icons"
-import CertegoryList from "./components/CertegoryList"
-import UserCreation from "./components/UserCreation"
-import Dashboard from './components/Dashboard';
-import ProductDetail from "./components/ProductDetail"
-import MerchantCreation from './components/MerchantCreation';
 
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { DataProvider } from './context/DataContext';
+import Navebar from './components/Navebar';
+import Home from './pages/Home';
+import PostCard from './components/PostCard';
+import PostModal from './components/modals/PostModal';
+import AuthModal from './components/modals/AuthModal';
+import Detail from './components/Detail';  // Changed from named import to default import
 
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+  const [isPostModalOpen, setIsPostModalOpen] = useState(false);
 
   return (
-<Router>
-<Navebar/> 
-<Routes>
-<Route path="/" element={<Home />}/>
-<Route path="/Icons" element={<Icons />}/>
-<Route path="/Tshop" element={<Tshop />}/>
-<Route path="/Login" element={<LoginPage />}/>
-<Route path="/use" element={<UserList />}/>
-<Route path="/product" element={<ProductList />}/>
-<Route path="/certegory" element={<CertegoryList />}/>
-<Route path="/user" element={< UserCreation />}/>
-<Route path="/admin/dashboard" element={<Dashboard />} />
-<Route path="/creation" element={<MerchantCreation />} />
-<Route path="/products/" element={<ProductDetail />}/>
-</Routes>
-<Footer/> 
-{/* <Hero/> */}
+    <DataProvider>
+      {/* <AuthProvider> */}
+      <Router>
+        <div className={`min-h-screen ${darkMode ? 'dark bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+          <Navebar 
+            darkMode={darkMode} 
+            setDarkMode={setDarkMode} 
+            openPostModal={() => setIsPostModalOpen(true)}
+          />
+          
+          <main className="container mx-auto px-4 py-8">
+            <Routes>
+              <Route path="/" element={<Home openPostModal={() => setIsPostModalOpen(true)} />} />
+              <Route path="/posts/:id" element={<PostCard />} />
+              <Route path="/Detail/:id" element={<Detail/>} />
+              <Route path="/login" element={<AuthModal/>} />
+              {/* <Route path="/profile" element={<UserProfile />} /> */}
+            </Routes>
+          </main>
 
-</Router>
-  )
+          {/* Post Creation Modal */}
+          <PostModal 
+            isOpen={isPostModalOpen} 
+            onClose={() => setIsPostModalOpen(false)} 
+          />
+        </div>
+      </Router>
+      {/* </AuthProvider> */}
+    </DataProvider>
+  );
 }
 
-export default App
+export default App;
+
+
+

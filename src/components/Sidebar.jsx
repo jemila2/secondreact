@@ -1,22 +1,54 @@
 
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Sidebar = () => {
-  return (
-    <div className="bg-gray-800 text-white w-64 h-full p-4">
-      <h2 className="text-2xl font-bold mb-4">E-Commerce Dashboard</h2>
-      <ul>
-        <li><Link to="/" className="block py-2">Overview</Link></li>
-        <li><Link to="/Tshop" className="block py-2">Products</Link></li>
-        <li><Link to="/orders" className="block py-2">Orders</Link></li>
-        <li><Link to="/users" className="block py-2">Users</Link></li>
-        <li><Link to="/certegory" className="block py-2">certegory</Link></li>
-        <li><Link to="/product" className="block py-2">ProductList</Link></li>
+  const location = useLocation();
 
-      </ul>
+  return (
+    <div className="bg-gradient-to-b from-indigo-900 to-purple-900 text-white w-64 h-screen p-6 flex flex-col shadow-xl">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-300 to-indigo-200">
+          Blog Dashboard
+        </h2>
+        <p className="text-sm text-purple-200 mt-1">Manage your content</p>
+      </div>
+
+      <nav className="flex-1">
+        <ul className="space-y-2">
+          {[
+            { path: "/PostList", name: "All Posts", icon: "📝" },
+            { path: "/PostForm", name: "Create Post", icon: "✍️" },
+            { path: "/Catigory", name: "Categories", icon: "🏷️" },
+            { path: "/PostDetail", name: "Post Details", icon: "🔍" },
+            { path: "/SinglePost", name: "Single Post", icon: "📄" },
+          ].map((item) => (
+            <li key={item.path}>
+              <Link
+                to={item.path}
+                className={`flex items-center px-4 py-3 rounded-lg transition-all 
+                  ${location.pathname.includes(item.path) 
+                    ? 'bg-white/10 text-white shadow-md'
+                    : 'text-purple-100 hover:bg-white/5 hover:text-white'
+                  }`}
+              >
+                <span className="mr-3 text-lg">{item.icon}</span>
+                <span className="font-medium">{item.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <div className="mt-auto pt-4 border-t border-white/10">
+        <div className="text-xs text-purple-200">
+          © {new Date().getFullYear()} Blog Admin
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Sidebar;
+

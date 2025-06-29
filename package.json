@@ -14,7 +14,9 @@
     "axios": "^1.8.1",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.8",
+    "cors": "^2.8.5",
     "icons": "^1.0.0",
+    "jwt-decode": "^4.0.0",
     "react": "^19.0.0",
     "react-boostrap-carousel": "^3.0.0",
     "react-bootstrap": "^2.10.9",
@@ -26,7 +28,8 @@
     "react-slick": "^0.30.3",
     "react-toastify": "^11.0.5",
     "slick-carousel": "^1.8.1",
-    "tailwindcss": "^4.0.7"
+    "tailwindcss": "^4.0.7",
+    "tostify": "^0.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",

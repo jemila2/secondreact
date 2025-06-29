@@ -1,0 +1,94 @@
+.reactions-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 10px;
+    padding: 10px; 
+    border-radius: 1.5rem; 
+    background-color: #f9f9f9; 
+}
+
+.reaction-item {
+    font-size: 2rem; 
+    cursor: pointer; 
+}
+
+
+
+
+
+
+/* 
+
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import Login from './components/Login';
+import Loging from './components/Loging';
+import Footer from "./components/Footer";
+import Navebar from "./components/Navebar";
+import Detail from "./components/Detail";
+import LoginModal from "./components/LoginModal";
+import Home from "./Pages/Home";
+import Adminsignin from "./Pages/Adminsignin";
+import Adminsigning from "./components/Adminsigning.";
+import Dashboard from './components/Dashboard';
+import Sidebar from "./components/Sidebar";
+import CategoryProvider from "./context/CategoryContext";
+import DataProvider from "./context/DataContext";
+import Catigory from "./Pages/Catigory";
+import PostForm from "./Pages/PostForm";
+import PostList from "./Pages/PostList";
+// import PostDetail from "./components/PostDetail";
+import { AuthProvider } from "./context/AuthContext";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProtectedRoute from "../ProtectedRoute";
+
+
+
+
+function App() {
+  // const location = useLocation();
+  const hideNavbarFooterPaths = ["/login", "/adminsignin", "/admin/dashboard", "/game"];
+
+  const shouldHideNavbarFooter = hideNavbarFooterPaths.some(path => 
+    location.pathname.toLowerCase().startsWith(path.toLowerCase())
+  );
+
+  return (
+    <Router>
+      <AuthProvider>
+        <DataProvider>
+          <CategoryProvider>
+            {!shouldHideNavbarFooter && <Navebar />}
+            <Routes>
+              {/* Public Routes *
+              /* <Route path="/" element={<Home />} />
+              <Route path="/Adminsignin" element={<Adminsignin />} />
+              <Route path="/Adminsigning" element={<Adminsigning />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/Loging" element={<Loging />} />
+              <Route path="/Detail/:id" element={<Detail />} />
+              <Route path="/LoginModal" element={<LoginModal />} />
+              
+                <Route path="/PostForm" element={<PostForm />} />
+              {/* <Route path="/PostDetail/:id" element={<PostDetail />} /> */
+
+              /* Protected Routes */
+              /* <Route element={<ProtectedRoute />}>
+                <Route path="/Dashboard" element={<Dashboard />} />
+                <Route path="/Sidebar" element={<Sidebar />} />
+                <Route path="/Catigory" element={<Catigory />} />
+                <Route path="/PostList" element={<PostList />} />
+              </Route>
+            </Routes>
+            {!shouldHideNavbarFooter && <Footer />}
+            <ToastContainer position="bottom-right" />
+          </CategoryProvider>
+        </DataProvider>
+      </AuthProvider>
+    </Router>
+  );
+}
+
+export default App;  */
+
